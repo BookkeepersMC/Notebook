@@ -13,7 +13,7 @@ This mod is compatible with Fabric, Quilt, Forge, and NeoForge.
 - Minecraft 1.20.4
 - Fabric Loader 0.15.6 or higher
 - Forge 49.0.19 or higher
-- Neoforge 20.4.83-beta or higher (I think?)
+- Neoforge 20.4.83-beta or higher
 - Fabric API for fabric
 
 ## Developing Guide
@@ -32,7 +32,18 @@ repositories {
 
 ### Implementation
 ```gradle
-modImplementation "dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion
+// Loader is like Fabric, Forge
+// mcversion is the targeted MC version, like 1.20.4
+// modversion is the Notebook version, ex. 1.0.1.4
+
+// Fabric
+modImplementation "dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion"
+
+// Forge
+implementation fg.deobf("dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion")
+
+// NeoForge
+implementation ("dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion")
 ```
 
 #### Requirements
