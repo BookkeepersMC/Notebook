@@ -32,7 +32,7 @@ repositories {
 
 ### Implementation
 ```gradle
-modImplementation "net.crypticverse:Notebook-api-loader-mcversion:modversion
+modImplementation "dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion
 ```
 
 #### Requirements
