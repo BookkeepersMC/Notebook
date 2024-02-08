@@ -1,12 +1,16 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge;
 plugins {
     idea
     `maven-publish`
     id("net.minecraftforge.gradle") version "[6.0,6.2)"
     id("org.spongepowered.mixin") version "0.7-SNAPSHOT"
+    id("com.modrinth.minotaur") version("2.+")
+    id("net.darkhax.curseforgegradle") version("1.1.18")
 }
 
 val mod_id: String by project
 val mod_name: String by project
+val version: String by project
 val minecraft_version: String by project
 val forge_version: String by project
 
@@ -82,7 +86,29 @@ minecraft {
         }
     }
 }
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("notebook-api")
+    versionNumber.set("${project.version}")
+    versionName.set("Notebook API Forge ${project.version}")
+    versionType.set("release")
+    uploadFile.set(tasks.jar)
+    gameVersions.addAll("1.20.4")
+    changelog = rootProject.file("CHANGELOG.md").readText()
+    loaders.add("forge")
+}
 
+tasks.register<TaskPublishCurseForge>("curseforge") {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+    val mainFile = upload(971909, tasks.jar.get())
+    mainFile.releaseType = "release"
+    mainFile.displayName = "Notebook API Forge ${version}"
+    mainFile.addGameVersion("1.20.4")
+    mainFile.addModLoader("Forge")
+    mainFile.addJavaVersion("Java 17")
+    mainFile.changelog = rootProject.file("CHANGELOG.md").readText()
+    mainFile.changelogType = "markdown"
+}
 sourceSets.main.get().resources.srcDir("src/generated/resources")
 
 dependencies {

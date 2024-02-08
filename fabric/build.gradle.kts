@@ -1,12 +1,16 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge;
 plugins {
     java
     idea
     `maven-publish`
     id("fabric-loom") version("1.4-SNAPSHOT")
+    id("com.modrinth.minotaur") version("2.+")
+    id("net.darkhax.curseforgegradle") version("1.1.18")
 }
 
 val mod_id: String by project
 val mod_name: String by project
+val version: String by project
 val minecraft_version: String by project
 val fabric_version: String by project
 val fabric_loader_version: String by project
@@ -47,6 +51,33 @@ loom {
     }
 }
 
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("notebook-api")
+    versionNumber.set("${project.version}")
+    versionName.set("Notebook API Fabric ${project.version}")
+    versionType.set("release")
+    uploadFile.set(tasks.remapJar)
+    gameVersions.addAll("1.20.4")
+    changelog = rootProject.file("CHANGELOG.md").readText()
+    loaders.add("fabric")
+    dependencies {
+        required.project("fabric-api")
+    }
+}
+
+tasks.register<TaskPublishCurseForge>("curseforge") {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+    val mainFile = upload(971909, tasks.remapJar.get())
+    mainFile.releaseType = "release"
+    mainFile.displayName = "Notebook API Fabric ${version}"
+    mainFile.addGameVersion("1.20.4")
+    mainFile.addModLoader("Fabric")
+    mainFile.addJavaVersion("Java 17")
+    mainFile.changelog = rootProject.file("CHANGELOG.md").readText()
+    mainFile.changelogType = "markdown"
+    mainFile.addRequirement("fabric-api")
+}
 tasks {
     withType<JavaCompile> { source(project(":common").sourceSets.main.get().allSource) }
 
