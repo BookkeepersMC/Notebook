@@ -1,0 +1,25 @@
+modLoader = "javafml"  
+loaderVersion = "[49,)"
+license = "MIT"
+
+[[mods]]  
+modId = "betterbiomes"
+version = "${version}"  
+displayName = "${mod_name}"
+credits = "${credits}"
+authors = "${mod_author}"
+description = '''${description}'''
+
+[[dependencies.betterbiomes]]
+modId = "forge"  
+mandatory = true  
+versionRange = "${forge_version_range}"  
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.betterbiomes]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"

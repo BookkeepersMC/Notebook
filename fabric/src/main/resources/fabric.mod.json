@@ -1,0 +1,35 @@
+{
+    "schemaVersion": 1,
+    "id": "notebook",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "homepage": "https://fabricmc.net/",
+        "sources": "https://github.com/FabricMC/fabric-example-mod"
+    },
+    "license": "${license}",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+          "dev.crypticverse.notebook.NotebookFabric"
+        ]
+    },
+    "mixins": [
+        "notebook.mixins.json",
+        "notebook.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.15.3",
+        "fabric-api": "*",
+        "minecraft": "~1.20.4",
+        "java": ">=17"
+    },
+    "suggests": {
+        "another-mod": "*"
+    }
+}
+  
