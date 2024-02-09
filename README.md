@@ -32,18 +32,17 @@ repositories {
 
 ### Implementation
 ```gradle
-// Loader is like Fabric, Forge
 // mcversion is the targeted MC version, like 1.20.4
 // modversion is the Notebook version, ex. 1.0.1.4
 
 // Fabric
-modImplementation "dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion"
+modImplementation "dev.bookkeepersmc:Notebook-api-fabric-mcversion:modversion"
 
 // Forge
-implementation fg.deobf("dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion")
+implementation fg.deobf("dev.bookkeepersmc:Notebook-api-forge-mcversion:modversion")
 
 // NeoForge
-implementation ("dev.bookkeepersmc:Notebook-api-loader-mcversion:modversion")
+implementation ("dev.bookkeepersmc:Notebook-api-neoforge-mcversion:modversion")
 ```
 
 #### Requirements
