@@ -15,7 +15,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-          "dev.crypticverse.notebook.NotebookFabric"
+          "dev.bookkeepersmc.notebook.NotebookFabric"
         ]
     },
     "mixins": [
@@ -30,6 +30,11 @@
     },
     "suggests": {
         "another-mod": "*"
+    },
+    "custom": {
+        "modmenu": {
+            "badges": ["library"]
+        }
     }
 }
   
