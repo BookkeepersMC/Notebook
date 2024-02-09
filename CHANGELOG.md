@@ -1,2 +1,4 @@
 ### This is a changelog!
-- Add changes here!
+- Made WorldProvider better
+- Added RegistryContext!
+- *Use like this: RegistryContext of type T*

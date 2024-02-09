@@ -2,7 +2,7 @@ import net.darkhax.curseforgegradle.TaskPublishCurseForge
 plugins {
     idea
     `maven-publish`
-    id("net.neoforged.gradle.userdev") version "7.0.81"
+    id("net.neoforged.gradle.userdev") version "7.+"
     `java-library`
     id("com.modrinth.minotaur") version("2.+")
     id("net.darkhax.curseforgegradle") version("1.1.18")
@@ -63,7 +63,7 @@ tasks.register<TaskPublishCurseForge>("curseforge") {
     apiToken = System.getenv("CURSEFORGE_TOKEN")
     val mainFile = upload(971909, tasks.jar.get())
     mainFile.releaseType = "release"
-    mainFile.displayName = "Notebook API NeoForge ${version}"
+    mainFile.displayName = "Notebook API NeoForge ${project.version}"
     mainFile.addGameVersion("1.20.4")
     mainFile.addModLoader("NeoForge")
     mainFile.addJavaVersion("Java 17")

@@ -3,7 +3,7 @@ plugins {
     java
     idea
     `maven-publish`
-    id("fabric-loom") version("1.4-SNAPSHOT")
+    id("fabric-loom") version("1.5-SNAPSHOT")
     id("com.modrinth.minotaur") version("2.+")
     id("net.darkhax.curseforgegradle") version("1.1.18")
 }
@@ -70,7 +70,7 @@ tasks.register<TaskPublishCurseForge>("curseforge") {
     apiToken = System.getenv("CURSEFORGE_TOKEN")
     val mainFile = upload(971909, tasks.remapJar.get())
     mainFile.releaseType = "release"
-    mainFile.displayName = "Notebook API Fabric ${version}"
+    mainFile.displayName = "Notebook API Fabric ${project.version}"
     mainFile.addGameVersion("1.20.4")
     mainFile.addModLoader("Fabric")
     mainFile.addJavaVersion("Java 17")
