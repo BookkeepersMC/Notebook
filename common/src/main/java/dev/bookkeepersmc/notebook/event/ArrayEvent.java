@@ -1,4 +1,4 @@
-package dev.bookkeepersmc.notebook.registry.content.util;
+package dev.bookkeepersmc.notebook.event;
 
 import dev.bookkeepersmc.notebook.NotebookCommon;
 import net.minecraft.resources.ResourceLocation;

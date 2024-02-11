@@ -1,4 +1,4 @@
-package dev.bookkeepersmc.notebook.registry.content.util;
+package dev.bookkeepersmc.notebook.event;
 
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;

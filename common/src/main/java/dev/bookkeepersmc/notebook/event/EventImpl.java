@@ -1,4 +1,4 @@
-package dev.bookkeepersmc.notebook.registry.content.util;
+package dev.bookkeepersmc.notebook.event;
 
 import com.google.common.collect.MapMaker;
 

@@ -97,7 +97,7 @@ public class FuelRegistryImpl implements FuelRegistry {
                     map.remove(item);
                 }
             } else {
-                AbstractFurnaceBlockEntity.add(map, tag, time);
+                addFuel(map, tag, time);
             }
         }
         for (ItemLike item : itemCookTimes.keySet()) {
@@ -106,12 +106,35 @@ public class FuelRegistryImpl implements FuelRegistry {
             if (time <= 0) {
                 map.remove(item.asItem());
             } else {
-                AbstractFurnaceBlockEntity.add(map, item, time);
+                addFuel(map, item, time);
             }
         }
 
     }
-    private static boolean isNotFuel(Item $$0) {
-        return $$0.builtInRegistryHolder().is(ItemTags.NON_FLAMMABLE_WOOD);
+    // AbstractFurnaceBlockEntity methods, edited because Normal crashes gradlew
+    private static boolean isNotFuel(Item item) {
+        return item.builtInRegistryHolder().is(ItemTags.NON_FLAMMABLE_WOOD);
+    }
+    public static void addFuel(Map<Item, Integer> map, TagKey<Item> tag, int i) {
+        for(Holder<Item> holder : BuiltInRegistries.ITEM.getTagOrEmpty(tag)) {
+            if (!isNotFuel(holder.value())) {
+                map.put(holder.value(), i);
+            }
+        }
+    }
+
+    public static void addFuel(Map<Item, Integer> map, ItemLike itemLike, int i) {
+        Item item = itemLike.asItem();
+        if (isNotFuel(item)) {
+            if (SharedConstants.IS_RUNNING_IN_IDE) {
+                throw (IllegalStateException)Util.pauseInIde(
+                        new IllegalStateException(
+                                "A developer tried to explicitly make fire resistant item " + item.getName(null).getString() + " a furnace fuel. That will not work!"
+                        )
+                );
+            }
+        } else {
+            map.put(item, i);
+        }
     }
 }

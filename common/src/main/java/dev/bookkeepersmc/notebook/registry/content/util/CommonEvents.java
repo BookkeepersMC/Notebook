@@ -1,5 +1,6 @@
 package dev.bookkeepersmc.notebook.registry.content.util;
 
+import dev.bookkeepersmc.notebook.event.Event;
 import net.minecraft.core.RegistryAccess;
 
 public class CommonEvents {
