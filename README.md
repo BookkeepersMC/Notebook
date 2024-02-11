@@ -1,6 +1,6 @@
 # [Notebook API](https://modrinth.com/mod/notebook-api)
 
-This is a library mod for Cryptic's mods!
+This is a API for working with resources in the "Common" module.
 
 # Installation 
 To install this mod on the client, place the `.jar` file in your `mods` folder.
