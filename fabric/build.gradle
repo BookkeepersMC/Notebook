@@ -79,6 +79,9 @@ tasks.withType(Javadoc).configureEach {
 tasks.named("sourcesJar", Jar) {
     from project(":common").sourceSets.main.resources
 }
+processResources {
+    from project(":common").sourceSets.main.resources
+}
 
 publishing {
     publications {
