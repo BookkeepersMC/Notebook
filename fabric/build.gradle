@@ -1,0 +1,96 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge;
+plugins {
+    id 'java'
+    id 'idea'
+    id 'maven-publish'
+    id 'fabric-loom' version '1.5-SNAPSHOT'
+    id "com.modrinth.minotaur" version "2.+"
+    id "net.darkhax.curseforgegradle"  version "1.1.18"
+}
+
+base {
+    archivesName.set("Notebook-api-fabric-${minecraft_version}")
+}
+
+dependencies {
+    minecraft("com.mojang:minecraft:${minecraft_version}")
+    mappings(loom.officialMojangMappings())
+    modImplementation "net.fabricmc:fabric-loader:$fabric_loader_version"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$fabric_version"
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+    compileOnly project(":common")
+}
+
+loom {
+    if (project(":common").file("src/main/resources/${mod_id}.accesswidener").exists())
+        accessWidenerPath.set(project(":common").file("src/main/resources/${mod_id}.accesswidener"))
+    mixin {
+        defaultRefmapName.set("${mod_id}.refmap.json")
+    }
+    runs {
+        client {
+            client()
+            setConfigName("Fabric Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+modrinth {
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("notebook-api")
+    versionNumber.set("${project.version}")
+    versionName.set("Notebook API Fabric ${project.version}")
+    versionType.set("release")
+    uploadFile.set(tasks.remapJar)
+    gameVersions.addAll("1.20.4")
+    changelog = rootProject.file("CHANGELOG.md").text
+    loaders.add("fabric")
+    dependencies {
+        required.project("fabric-api")
+    }
+}
+
+task curseforge(type: TaskPublishCurseForge) {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+    def mainFile = upload(971909, remapJar)
+    mainFile.releaseType = "release"
+    mainFile.displayName = "Notebook API Fabric ${project.version}"
+    mainFile.addGameVersion("1.20.4")
+    mainFile.addModLoader("Fabric")
+    mainFile.addJavaVersion("Java 17")
+    mainFile.changelog = rootProject.file("CHANGELOG.md").text
+    mainFile.changelogType = "markdown"
+    mainFile.addRequirement("fabric-api")
+}
+tasks.withType(JavaCompile).configureEach {
+    source(project(":common").sourceSets.main.allSource)
+}
+tasks.withType(Javadoc).configureEach {
+    source(project(":common").sourceSets.main.allJava)
+}
+tasks.named("sourcesJar", Jar) {
+    from project(":common").sourceSets.main.resources
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "Notebook-api-fabric-${minecraft_version}"
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url = System.getenv("MAVEN_URL")
+        }
+    }
+}

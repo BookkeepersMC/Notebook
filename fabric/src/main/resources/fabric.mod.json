@@ -18,6 +18,7 @@
           "dev.bookkeepersmc.notebook.NotebookFabric"
         ]
     },
+    "accessWidener": "notebook.accesswidener",
     "mixins": [
         "notebook.mixins.json",
         "notebook.fabric.mixins.json"

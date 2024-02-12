@@ -1,0 +1,36 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'maven-publish'
+    id "org.spongepowered.gradle.vanilla" version "0.2.1-SNAPSHOT"
+}
+
+base {
+    archivesName = "Notebook-api-common-${minecraft_version}"
+}
+
+minecraft {
+    version(minecraft_version)
+    if(file("src/main/resources/notebook.accesswidener").exists()) {
+        accessWideners(file("src/main/resources/notebook.accesswidener"))
+    }
+}
+
+dependencies {
+    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "Notebook-api-common-${minecraft_version}"
+        }
+    }
+    repositories {
+        maven {
+            url = System.getenv("MAVEN_URL")
+        }
+    }
+}
