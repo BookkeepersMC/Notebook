@@ -101,7 +101,7 @@ public class FuelRegistryImpl implements FuelRegistry {
                     map.remove(item);
                 }
             } else {
-                addFuel(map, tag, time);
+                AbstractFurnaceBlockEntity.add(map, tag, time);
             }
         }
         for (ItemLike item : itemCookTimes.keySet()) {
@@ -110,7 +110,7 @@ public class FuelRegistryImpl implements FuelRegistry {
             if (time <= 0) {
                 map.remove(item.asItem());
             } else {
-                addFuel(map, item, time);
+                AbstractFurnaceBlockEntity.add(map, item, time);
             }
         }
 

@@ -1,12 +1,15 @@
 modLoader = "javafml"
 loaderVersion = "${neoforge_loader_version_range}"
-license = "MIT"
+license = "${license}"
+issueTrackerURL="https://github.com/BookkeepersMC/Notebook/issues"
 
 [[mods]]
-modId = "betterbiomes"
+modId = "${mod_id}"
 version = "${version}"
 displayName = "${mod_name}"
-credits = "${credits}"
+displayURL="https://curseforge.com/minecraft/mc-mods/notebook-api"
+logoFile="${mod_id}.png"
+credits="${credits}"
 authors = "${mod_author}"
 description = '''${description}'''
 
@@ -16,19 +19,22 @@ config = "notebook.mixins.json"
 [[mixins]]
 config = "notebook.neoforge.mixins.json"
 
-[[dependencies.betterbiomes]]
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
+[[dependencies.${mod_id}]]
 modId = "neoforge"
 type="required"
 versionRange = "${neoforge_loader_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.betterbiomes]]
+[[dependencies.${mod_id}]]
 modId = "minecraft"
 type="required"
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
-#[features.betterbiomes]
+#[features.${mod_id}]
 #openGLVersion="[3.2,)"
