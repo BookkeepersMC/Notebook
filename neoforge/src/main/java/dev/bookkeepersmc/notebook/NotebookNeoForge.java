@@ -7,6 +7,6 @@ import net.neoforged.fml.common.Mod;
 public class NotebookNeoForge {
 
     public NotebookNeoForge(IEventBus modEventBus) {
-
+        NotebookCommon.init();
     }
 }
