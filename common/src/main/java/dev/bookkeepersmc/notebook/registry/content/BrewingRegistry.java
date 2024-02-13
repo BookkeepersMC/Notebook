@@ -23,7 +23,7 @@ public final class BrewingRegistry {
         Objects.requireNonNull(input, "Input cannot be null!");
         Objects.requireNonNull(ingredient, "Ingredient cannot be null!");
         Objects.requireNonNull(output, "Output cannot be null!");
-        PotionBrewing.CONTAINER_MIXES.add(new PotionBrewing.Mix<>(input, ingredient, output));
+        PotionMaker.CONTAINER_MIX.add(new PotionMaker.Mixer<>(input, ingredient, output));
     }
     /**
      * Register a recipe for converting from one potion to another (e.g. awkward to instant health).
@@ -37,6 +37,6 @@ public final class BrewingRegistry {
         Objects.requireNonNull(input, "Input cannot be null!");
         Objects.requireNonNull(ingredient, "Ingredient cannot be null!");
         Objects.requireNonNull(output, "Output cannot be null");
-        PotionBrewing.POTION_MIXES.add(new PotionBrewing.Mix<>(input, ingredient, output));
+        PotionMaker.POTION_MIX.add(new PotionMaker.Mixer<>(input, ingredient, output));
     }
 }
