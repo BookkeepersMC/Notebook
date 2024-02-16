@@ -1,4 +1,4 @@
-# [Notebook API](https://modrinth.com/mod/notebook-api)
+# [Notebook API](https://curseforge.com/minecraft/mc-mods/notebook-api)
 
 This is a API for working with resources in the "Common" module.
 
