@@ -1,24 +1,24 @@
 {
-    "required": true,
-    "minVersion": "0.8",
-    "package": "dev.bookkeepersmc.notebook.mixin",
-    "refmap": "${mod_id}.refmap.json",
-    "compatibilityLevel": "JAVA_17",
-    "mixins": [
-        "HoeAccessor",
-        "AxeAccessor",
-        "ShovelAccessor",
-        "FarmerAccessor",
-        "GiveGiftsToHeroAccessor",
-        "VillagerAccessor"
-    ],
-    "client": [
-
-    ],
-    "server": [
-    ],
-    "injectors": {
-        "defaultRequire": 1
-    }
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.bookkeepersmc.notebook.mixin",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AxeAccessor",
+    "FarmerAccessor",
+    "GiveGiftsToHeroAccessor",
+    "HoeAccessor",
+    "ShovelAccessor",
+    "VillagerAccessor"
+  ],
+  "client": [
+    "ModelLayersAccessor"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
 

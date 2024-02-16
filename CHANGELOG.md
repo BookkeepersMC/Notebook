@@ -1,3 +1,3 @@
-### Fixes
-- Part 3 content registry, Screen Handler things!
-- Bump version
+### Additions
+- Redo packages, new Env annotation
+- Biome API

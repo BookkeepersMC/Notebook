@@ -15,7 +15,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-          "dev.bookkeepersmc.notebook.NotebookFabric"
+          "com.bookkeepersmc.notebook.NotebookFabric"
         ]
     },
     "accessWidener": "notebook.accesswidener",

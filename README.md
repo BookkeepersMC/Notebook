@@ -36,16 +36,16 @@ repositories {
 // modversion is the Notebook version, ex. 1.0.1.4
 
 // Common
-implementation "dev.bookkeepersmc:Notebook-api-common-mcversion:modversion"
+implementation "com.bookkeepersmc:Notebook-api-common-mcversion:modversion"
 
 // Fabric
-modImplementation "dev.bookkeepersmc:Notebook-api-fabric-mcversion:modversion"
+modImplementation "com.bookkeepersmc:Notebook-api-fabric-mcversion:modversion"
 
 // Forge
-implementation fg.deobf("dev.bookkeepersmc:Notebook-api-forge-mcversion:modversion")
+implementation fg.deobf("com.bookkeepersmc:Notebook-api-forge-mcversion:modversion")
 
 // NeoForge
-implementation ("dev.bookkeepersmc:Notebook-api-neoforge-mcversion:modversion")
+implementation ("com.bookkeepersmc:Notebook-api-neoforge-mcversion:modversion")
 ```
 
 #### Requirements
