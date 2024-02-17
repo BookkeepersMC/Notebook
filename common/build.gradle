@@ -26,6 +26,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             artifactId = "Notebook-api-common-${minecraft_version}"
+            from components.java
         }
     }
     repositories {
