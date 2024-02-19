@@ -1,5 +1,6 @@
-package com.bookkeepersmc.notebook;
+package com.bookkeepersmc.notebook.neoforge;
 
+import com.bookkeepersmc.notebook.NotebookCommon;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
