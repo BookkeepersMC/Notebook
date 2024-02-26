@@ -8,6 +8,10 @@ import net.minecraft.data.registries.RegistryPatchGenerator;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * @deprecated replace with Neo/Forge DatapackBuiltInEntriesProvider
+ */
+@Deprecated(forRemoval = true)
 public class WorldProvider extends RegistriesDatapackGenerator {
     private final CompletableFuture<HolderLookup.Provider> registries;
 
