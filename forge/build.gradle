@@ -86,7 +86,7 @@ modrinth {
 task curseforge(type: TaskPublishCurseForge) {
     apiToken = System.getenv("CURSEFORGE_TOKEN")
 
-    def mainFile = upload(938715, jar)
+    def mainFile = upload(971909, jar)
     mainFile.releaseType = 'release'
     mainFile.displayName = "Notebook API Forge ${rootProject.version}"
     mainFile.addGameVersion("1.20.4")
