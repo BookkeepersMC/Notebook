@@ -11,10 +11,10 @@ For servers, place the file in the `mods` folder on the server.
 
 This mod is compatible with Fabric, Quilt, Forge, and NeoForge.
 - Minecraft 1.20.4
-- Fabric Loader 0.15.6 or higher
-- Forge 49.0.27 or higher
-- Neoforge 20.4.155-beta or higher
-- Fabric API 0.96.0+1.20.4 or higher for fabric
+- Fabric Loader 0.15.7 or higher
+- Forge 49.0.31 or higher
+- Neoforge 20.4.190 or higher
+- Fabric API 0.96.4+1.20.4 or higher for fabric
 
 ## Developing Guide
 Notebook API uses the normal Gradle project structure, and can be compiled by running the gradle task `build`.
@@ -33,13 +33,13 @@ repositories {
 ### Implementation
 ```gradle
 // mcversion is the targeted MC version, like 1.20.4
-// modversion is the Notebook version, ex. 1.0.1.4
+// modversion is the Notebook version, ex. 1.1.0.6
 
 // Common
 implementation "com.bookkeepersmc:Notebook-api-common-mcversion:modversion"
 
 // Fabric
-modImplementation "com.bookkeepersmc:Notebook-api-fabric-mcversion:modversion"
+include(modImplementation "com.bookkeepersmc:Notebook-api-fabric-mcversion:modversion")
 
 // Forge
 implementation fg.deobf("com.bookkeepersmc:Notebook-api-forge-mcversion:modversion")
