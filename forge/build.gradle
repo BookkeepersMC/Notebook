@@ -136,3 +136,6 @@ sourceSets.each {
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
 }
+signing {
+    sign publishing.publications.mavenJava
+}
