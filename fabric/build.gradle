@@ -46,8 +46,8 @@ loom {
 modrinth {
     token.set(System.getenv("MODRINTH_TOKEN"))
     projectId.set("notebook-api")
-    versionNumber.set("${project.version}")
-    versionName.set("Notebook API Fabric ${project.version}")
+    versionNumber.set("${project.mod_version}")
+    versionName.set("[1.20.4] Notebook API Fabric ${project.display_name}")
     versionType.set("release")
     uploadFile.set(tasks.remapJar)
     gameVersions.addAll("1.20.4")
@@ -62,7 +62,7 @@ task curseforge(type: TaskPublishCurseForge) {
     apiToken = System.getenv("CURSEFORGE_TOKEN")
     def mainFile = upload(971909, remapJar)
     mainFile.releaseType = "release"
-    mainFile.displayName = "Notebook API Fabric ${project.version}"
+    mainFile.displayName = "[1.20.4] Notebook API Fabric ${display_name}"
     mainFile.addGameVersion("1.20.4")
     mainFile.addModLoader("Fabric")
     mainFile.addJavaVersion("Java 17")
