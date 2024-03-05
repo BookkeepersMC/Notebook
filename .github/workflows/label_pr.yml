@@ -1,0 +1,15 @@
+name: Auto Label PR
+
+on: 
+  pull_request:
+    types: ["opened", "reopened"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: Renato66/auto-label@v2
+       with:
+         repo-token: ${{ secrets.GITHUB_TOKEN }}
+         default-labels: '["awaiting-review"]'
+  
