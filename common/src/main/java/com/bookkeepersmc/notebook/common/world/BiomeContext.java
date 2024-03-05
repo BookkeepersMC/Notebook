@@ -20,12 +20,14 @@
  * SOFTWARE.
  *
  */
-
 package com.bookkeepersmc.notebook.common.world;
 
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.function.BiPredicate;
+
+import org.jetbrains.annotations.NotNull;
+
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
@@ -41,176 +43,175 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import org.jetbrains.annotations.NotNull;
 
 public interface BiomeContext {
-    WeatherContext getWeather();
+	WeatherContext getWeather();
 
-    EffectsContext getEffects();
+	EffectsContext getEffects();
 
-    GenerationSettingsContext getGenerationSettings();
+	GenerationSettingsContext getGenerationSettings();
 
-    SpawnSettingsContext getSpawnSettings();
+	SpawnSettingsContext getSpawnSettings();
 
-    interface WeatherContext {
+	interface WeatherContext {
 
-        void setPrecip(boolean hasPrecipitation);
+		void setPrecip(boolean hasPrecipitation);
 
-        void setTemp(float temperature);
+		void setTemp(float temperature);
 
-        void setTemperatureModifier(Biome.TemperatureModifier temperatureModifier);
+		void setTemperatureModifier(Biome.TemperatureModifier temperatureModifier);
 
-        void setDownfall(float downfall);
-    }
+		void setDownfall(float downfall);
+	}
 
-    interface EffectsContext {
+	interface EffectsContext {
 
-        void setFogColor(int color);
+		void setFogColor(int color);
 
-        void setWaterColor(int color);
+		void setWaterColor(int color);
 
-        void setWaterFogColor(int color);
+		void setWaterFogColor(int color);
 
-        void setSkyColor(int color);
+		void setSkyColor(int color);
 
-        void setFoliageColor(Optional<Integer> color);
+		void setFoliageColor(Optional<Integer> color);
 
-        default void setFoliageColor(int color) {
-            setFoliageColor(Optional.of(color));
-        }
+		default void setFoliageColor(int color) {
+			setFoliageColor(Optional.of(color));
+		}
 
-        default void setFoliageColor(OptionalInt color) {
-            color.ifPresentOrElse(this::setFoliageColor, this::clearFoliageColor);
-        }
+		default void setFoliageColor(OptionalInt color) {
+			color.ifPresentOrElse(this::setFoliageColor, this::clearFoliageColor);
+		}
 
-        default void clearFoliageColor() {
-            setFoliageColor(Optional.empty());
-        }
+		default void clearFoliageColor() {
+			setFoliageColor(Optional.empty());
+		}
 
-        void setGrassColor(Optional<Integer> color);
+		void setGrassColor(Optional<Integer> color);
 
-        default void setGrassColor(int color) {
-            setGrassColor(Optional.of(color));
-        }
+		default void setGrassColor(int color) {
+			setGrassColor(Optional.of(color));
+		}
 
-        default void setGrassColor(OptionalInt color) {
-            color.ifPresentOrElse(this::setGrassColor, this::clearGrassColor);
-        }
+		default void setGrassColor(OptionalInt color) {
+			color.ifPresentOrElse(this::setGrassColor, this::clearGrassColor);
+		}
 
-        default void clearGrassColor() {
-            setGrassColor(Optional.empty());
-        }
+		default void clearGrassColor() {
+			setGrassColor(Optional.empty());
+		}
 
-        void setGrassColorModifier(@NotNull BiomeSpecialEffects.GrassColorModifier colorModifier);
+		void setGrassColorModifier(@NotNull BiomeSpecialEffects.GrassColorModifier colorModifier);
 
-        void setParticleConfig(Optional<AmbientParticleSettings> particleConfig);
+		void setParticleConfig(Optional<AmbientParticleSettings> particleConfig);
 
-        default void setParticleConfig(@NotNull AmbientParticleSettings particleConfig) {
-            setParticleConfig(Optional.of(particleConfig));
-        }
+		default void setParticleConfig(@NotNull AmbientParticleSettings particleConfig) {
+			setParticleConfig(Optional.of(particleConfig));
+		}
 
-        default void clearParticleConfig() {
-            setParticleConfig(Optional.empty());
-        }
+		default void clearParticleConfig() {
+			setParticleConfig(Optional.empty());
+		}
 
-        void setAmbientSound(Optional<Holder<SoundEvent>> sound);
+		void setAmbientSound(Optional<Holder<SoundEvent>> sound);
 
-        default void setAmbientSound(@NotNull Holder<SoundEvent> sound) {
-            setAmbientSound(Optional.of(sound));
-        }
+		default void setAmbientSound(@NotNull Holder<SoundEvent> sound) {
+			setAmbientSound(Optional.of(sound));
+		}
 
-        default void clearAmbientSound() {
-            setAmbientSound(Optional.empty());
-        }
+		default void clearAmbientSound() {
+			setAmbientSound(Optional.empty());
+		}
 
-        void setMoodSound(Optional<AmbientMoodSettings> sound);
+		void setMoodSound(Optional<AmbientMoodSettings> sound);
 
-        default void setMoodSound(@NotNull AmbientMoodSettings sound) {
-            setMoodSound(Optional.of(sound));
-        }
+		default void setMoodSound(@NotNull AmbientMoodSettings sound) {
+			setMoodSound(Optional.of(sound));
+		}
 
-        default void clearMoodSound() {
-            setMoodSound(Optional.empty());
-        }
+		default void clearMoodSound() {
+			setMoodSound(Optional.empty());
+		}
 
-        void setAdditionsSound(Optional<AmbientAdditionsSettings> sound);
+		void setAdditionsSound(Optional<AmbientAdditionsSettings> sound);
 
-        default void setAdditionsSound(@NotNull AmbientAdditionsSettings sound) {
-            setAdditionsSound(Optional.of(sound));
-        }
+		default void setAdditionsSound(@NotNull AmbientAdditionsSettings sound) {
+			setAdditionsSound(Optional.of(sound));
+		}
 
-        default void clearAdditionsSound() {
-            setAdditionsSound(Optional.empty());
-        }
+		default void clearAdditionsSound() {
+			setAdditionsSound(Optional.empty());
+		}
 
-        void setMusic(Optional<Music> sound);
+		void setMusic(Optional<Music> sound);
 
-        default void setMusic(@NotNull Music sound) {
-            setMusic(Optional.of(sound));
-        }
+		default void setMusic(@NotNull Music sound) {
+			setMusic(Optional.of(sound));
+		}
 
-        default void clearMusic() {
-            setMusic(Optional.empty());
-        }
-    }
+		default void clearMusic() {
+			setMusic(Optional.empty());
+		}
+	}
 
-    interface GenerationSettingsContext {
+	interface GenerationSettingsContext {
 
-        boolean removeFeature(GenerationStep.Decoration step, ResourceKey<PlacedFeature> placedFeatureKey);
+		boolean removeFeature(GenerationStep.Decoration step, ResourceKey<PlacedFeature> placedFeatureKey);
 
-        default boolean removeFeature(ResourceKey<PlacedFeature> placedFeatureKey) {
-            boolean anyFound = false;
+		default boolean removeFeature(ResourceKey<PlacedFeature> placedFeatureKey) {
+			boolean anyFound = false;
 
-            for (GenerationStep.Decoration step : GenerationStep.Decoration.values()) {
-                if (removeFeature(step, placedFeatureKey)) {
-                    anyFound = true;
-                }
-            }
+			for (GenerationStep.Decoration step : GenerationStep.Decoration.values()) {
+				if (removeFeature(step, placedFeatureKey)) {
+					anyFound = true;
+				}
+			}
 
-            return anyFound;
-        }
+			return anyFound;
+		}
 
-        void addFeature(GenerationStep.Decoration step, ResourceKey<PlacedFeature> placedFeatureKey);
+		void addFeature(GenerationStep.Decoration step, ResourceKey<PlacedFeature> placedFeatureKey);
 
-        void addCarver(GenerationStep.Carving step, ResourceKey<ConfiguredWorldCarver<?>> carverKey);
+		void addCarver(GenerationStep.Carving step, ResourceKey<ConfiguredWorldCarver<?>> carverKey);
 
-        boolean removeCarver(GenerationStep.Carving step, ResourceKey<ConfiguredWorldCarver<?>> configuredCarverKey);
+		boolean removeCarver(GenerationStep.Carving step, ResourceKey<ConfiguredWorldCarver<?>> configuredCarverKey);
 
-        default boolean removeCarver(ResourceKey<ConfiguredWorldCarver<?>> configuredCarverKey) {
-            boolean anyFound = false;
+		default boolean removeCarver(ResourceKey<ConfiguredWorldCarver<?>> configuredCarverKey) {
+			boolean anyFound = false;
 
-            for (GenerationStep.Carving step : GenerationStep.Carving.values()) {
-                if (removeCarver(step, configuredCarverKey)) {
-                    anyFound = true;
-                }
-            }
+			for (GenerationStep.Carving step : GenerationStep.Carving.values()) {
+				if (removeCarver(step, configuredCarverKey)) {
+					anyFound = true;
+				}
+			}
 
-            return anyFound;
-        }
-    }
+			return anyFound;
+		}
+	}
 
-    interface SpawnSettingsContext {
+	interface SpawnSettingsContext {
 
-        void setCreatureSpawnProbability(float probability);
+		void setCreatureSpawnProbability(float probability);
 
-        void addSpawn(MobCategory spawnGroup, MobSpawnSettings.SpawnerData spawnEntry);
+		void addSpawn(MobCategory spawnGroup, MobSpawnSettings.SpawnerData spawnEntry);
 
-        boolean removeSpawns(BiPredicate<MobCategory, MobSpawnSettings.SpawnerData> predicate);
+		boolean removeSpawns(BiPredicate<MobCategory, MobSpawnSettings.SpawnerData> predicate);
 
-        default boolean removeSpawnsOfEntityType(EntityType<?> entityType) {
-            return removeSpawns((spawnGroup, spawnEntry) -> spawnEntry.type == entityType);
-        }
+		default boolean removeSpawnsOfEntityType(EntityType<?> entityType) {
+			return removeSpawns((spawnGroup, spawnEntry) -> spawnEntry.type == entityType);
+		}
 
-        default void clearSpawns(MobCategory group) {
-            removeSpawns((spawnGroup, spawnEntry) -> spawnGroup == group);
-        }
+		default void clearSpawns(MobCategory group) {
+			removeSpawns((spawnGroup, spawnEntry) -> spawnGroup == group);
+		}
 
-        default void clearSpawns() {
-            removeSpawns((spawnGroup, spawnEntry) -> true);
-        }
+		default void clearSpawns() {
+			removeSpawns((spawnGroup, spawnEntry) -> true);
+		}
 
-        void setSpawnCost(EntityType<?> entityType, double mass, double gravityLimit);
+		void setSpawnCost(EntityType<?> entityType, double mass, double gravityLimit);
 
-        void clearSpawnCost(EntityType<?> entityType);
-    }
+		void clearSpawnCost(EntityType<?> entityType);
+	}
 }

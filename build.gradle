@@ -1,9 +1,25 @@
 plugins {
     // Required for NeoGradle
     id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.7"
+    id 'com.diffplug.spotless' version '6.25.0'
 }
 allprojects {
+    repositories {
+        mavenCentral()
+    }
     apply plugin: 'signing'
+    apply plugin: 'java'
+    apply plugin: 'com.diffplug.spotless'
+
+    spotless {
+        java {
+            licenseHeaderFile(rootProject.file("HEADER"))
+            removeUnusedImports()
+            importOrder('java', 'javax', '', 'net.minecraft', 'com.bookkeepersmc')
+            indentWithTabs()
+            trimTrailingWhitespace()
+        }
+    }
 }
 
 subprojects {
@@ -34,6 +50,7 @@ subprojects {
                     'Built-On-Minecraft'      : minecraft_version
             ])
         }
+        version = mod_version
     }
     sourcesJar {
         from(rootProject.file("LICENSE")) {

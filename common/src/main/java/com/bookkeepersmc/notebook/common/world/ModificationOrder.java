@@ -20,15 +20,14 @@
  * SOFTWARE.
  *
  */
-
 package com.bookkeepersmc.notebook.common.world;
 
 public enum ModificationOrder {
-    ADDITIONS,
+	ADDITIONS,
 
-    REMOVALS,
+	REMOVALS,
 
-    REPLACEMENTS,
+	REPLACEMENTS,
 
-    POST_PROCESSING
+	POST_PROCESSING
 }

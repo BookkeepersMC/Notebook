@@ -20,12 +20,12 @@
  * SOFTWARE.
  *
  */
-
 package com.bookkeepersmc.notebook.registry.content.impl;
 
-import com.bookkeepersmc.notebook.registry.content.FlammableRegistry;
 import net.minecraft.world.level.block.state.BlockState;
 
+import com.bookkeepersmc.notebook.registry.content.FlammableRegistry;
+
 public interface FireHooks {
-    FlammableRegistry.Entry getEntry(BlockState block);
+	FlammableRegistry.Entry getEntry(BlockState block);
 }

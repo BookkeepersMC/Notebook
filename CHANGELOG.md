@@ -1,3 +1,4 @@
 This version brings fixes
 ### Fixes
-- All files are now licensed
+- Apply spotless, all code should now be cleaner
+- Hint *1.20.5-Snapshots* in the future?

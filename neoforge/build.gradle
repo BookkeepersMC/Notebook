@@ -38,7 +38,7 @@ runs {
 modrinth {
     token.set(System.getenv("MODRINTH_TOKEN"))
     projectId.set("notebook-api")
-    versionNumber.set("${project.version}")
+    versionNumber.set("${project.mod_version}")
     versionName.set("[1.20.4] Notebook API NeoForge ${project.mod_version}")
     versionType.set("release")
     uploadFile.set(tasks.jar)

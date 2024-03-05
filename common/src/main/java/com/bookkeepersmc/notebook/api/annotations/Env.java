@@ -20,7 +20,6 @@
  * SOFTWARE.
  *
  */
-
 package com.bookkeepersmc.notebook.api.annotations;
 
 import java.lang.annotation.*;
@@ -29,5 +28,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR, ElementType.PACKAGE})
 @Documented
 public @interface Env {
-    Enviroment value();
+	Enviroment value();
 }

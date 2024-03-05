@@ -20,11 +20,10 @@
  * SOFTWARE.
  *
  */
-
 package com.bookkeepersmc.notebook.api.annotations;
 
 public enum Enviroment {
-    CLIENT,
+	CLIENT,
 
-    SERVER
+	SERVER
 }
