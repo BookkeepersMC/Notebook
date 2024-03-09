@@ -11,6 +11,8 @@ accessible	field	net/minecraft/world/item/alchemy/PotionBrewing	POTION_MIXES	Lja
 accessible	field	net/minecraft/world/item/alchemy/PotionBrewing	CONTAINER_MIXES	Ljava/util/List;
 
 accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
+accessible class net/minecraft/data/models/BlockModelGenerators$BlockFamilyProvider
+accessible field net/minecraft/data/models/BlockModelGenerators SHAPE_CONSUMERS Ljava/util/Map;
 
 # Biome stuff. IT'S SO MUCH lol
 accessible	class	net/minecraft/world/level/biome/Biome$ClimateSettings
