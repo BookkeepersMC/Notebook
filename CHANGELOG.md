@@ -1,4 +1,4 @@
 This version brings fixes
 ### Fixes
-- Apply spotless, all code should now be cleaner
-- Hint *1.20.5-Snapshots* in the future?
+- Model Generators for Fabric, allows sign generation on Mojmap
+- Rename referenced of versioning on Modrinth

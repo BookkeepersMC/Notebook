@@ -46,7 +46,7 @@ loom {
 modrinth {
     token.set(System.getenv("MODRINTH_TOKEN"))
     projectId.set("notebook-api")
-    versionNumber.set("${project.mod_version}")
+    versionNumber.set("fabric-${project.mod_version}")
     versionName.set("[1.20.4] Notebook API Fabric ${project.display_name}")
     versionType.set("release")
     uploadFile.set(tasks.remapJar)
