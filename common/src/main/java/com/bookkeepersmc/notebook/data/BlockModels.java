@@ -20,17 +20,7 @@
  * SOFTWARE.
  *
  */
-
 package com.bookkeepersmc.notebook.data;
-
-import com.google.gson.JsonElement;
-import net.minecraft.data.BlockFamily;
-import net.minecraft.data.models.BlockModelGenerators;
-import net.minecraft.data.models.blockstates.BlockStateGenerator;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -38,25 +28,35 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import com.google.gson.JsonElement;
+import org.jetbrains.annotations.Nullable;
+
+import net.minecraft.data.BlockFamily;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.blockstates.BlockStateGenerator;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+
 public class BlockModels extends BlockModelGenerators {
-    @Nullable
-    private BlockFamily family;
-    private final Set<Block> children = new HashSet<>();
+	@Nullable
+	private BlockFamily family;
+	private final Set<Block> children = new HashSet<>();
 
-    public BlockModels(Consumer<BlockStateGenerator> consumer, BiConsumer<ResourceLocation, Supplier<JsonElement>> biConsumer, Consumer<Item> itemConsumer) {
-        super(consumer, biConsumer, itemConsumer);
-    }
+	public BlockModels(Consumer<BlockStateGenerator> consumer, BiConsumer<ResourceLocation, Supplier<JsonElement>> biConsumer, Consumer<Item> itemConsumer) {
+		super(consumer, biConsumer, itemConsumer);
+	}
 
-    public BlockModels familyProvider(BlockFamily family) {
-        this.family = family;
-        family.getVariants().forEach((variant, block) -> {
-            if (!this.children.contains(block)) {
-                BiConsumer<BlockModels, Block> biConsumer = (BiConsumer) BlockModelGenerators.SHAPE_CONSUMERS.get(variant);
-                if (biConsumer != null) {
-                    biConsumer.accept(this, block);
-                }
-            }
-        });
-        return this;
-    }
+	public BlockModels familyProvider(BlockFamily family) {
+		this.family = family;
+		family.getVariants().forEach((variant, block) -> {
+			if (!this.children.contains(block)) {
+				BiConsumer<BlockModels, Block> biConsumer = (BiConsumer) BlockModelGenerators.SHAPE_CONSUMERS.get(variant);
+				if (biConsumer != null) {
+					biConsumer.accept(this, block);
+				}
+			}
+		});
+		return this;
+	}
 }

@@ -20,20 +20,19 @@
  * SOFTWARE.
  *
  */
-
 package com.bookkeepersmc.notebook.data;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.data.PackOutput;
+
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.ModelProvider;
 
 public abstract class FabricModelGenerators extends ModelProvider {
-    public FabricModelGenerators(FabricDataOutput output) {
-        super(output);
-    }
+	public FabricModelGenerators(FabricDataOutput output) {
+		super(output);
+	}
 
-    public abstract void generateBlockStates(BlockModels models);
+	public abstract void generateBlockStates(BlockModels models);
 
-    public abstract void generateItemModels(ItemModelGenerators models);
+	public abstract void generateItemModels(ItemModelGenerators models);
 }
