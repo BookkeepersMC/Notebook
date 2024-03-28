@@ -19,6 +19,9 @@ allprojects {
             indentWithTabs()
             trimTrailingWhitespace()
         }
+        kotlin {
+            licenseHeaderFile(rootProject.file("HEADER"))
+        }
     }
 }
 

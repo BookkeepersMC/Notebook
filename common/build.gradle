@@ -3,6 +3,8 @@ plugins {
     id 'java'
     id 'maven-publish'
     id "org.spongepowered.gradle.vanilla" version "0.2.1-SNAPSHOT"
+    // Kotlin Adapter
+    id "org.jetbrains.kotlin.jvm" version "1.9.23"
 }
 base {
     archivesName = "Notebook-api-common-${minecraft_version}"
@@ -16,10 +18,33 @@ minecraft {
     }
 }
 
+def kotlinLibraries = [
+        "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}",
+        "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}",
+        "org.jetbrains.kotlin:kotlin-stdlib-common:${kotlin_version}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutines_version}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:${coroutines_version}",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:${coroutines_version}",
+        "org.jetbrains.kotlinx:kotlinx-serialization-core:${serialization_version}",
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${serialization_version}",
+]
+
 dependencies {
     compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+
+    // Kotlin
+    compileOnly "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    implementation(kotlinLibraries)
+
 }
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
